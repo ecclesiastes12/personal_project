@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<!-- fragment for page header -->
+<!-- <head th:fragment="page_head(title)"> -->
+
+<!-- page_head fragment modified with a second parameter -->
+<head th:fragment="page_head(title,remove)" th:remove="${remove}">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- for mobile phones responsiveness -->
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+
+<title>[[${title}]]</title>
+
+<link rel="stylesheet" th:href="@{/sidebar.css}">
+<link rel="stylesheet" th:href="@{/style.css}">
+<link rel="stylesheet" th:href="@{/fontawesome/all.css}">
+<link rel="stylesheet" type="text/css"
+	th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+
+<script type="text/javascript" th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script type="text/javascript"
+	th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/sidebar.js}"></script>
+
+</head>
+<body>
+
+	<!-- <header th:fragment="header">
+
+		<div class="header">
+			<div class="header-menu">
+				<div class="title">
+					Coding <span>Snow</span>
+				</div>
+				<div class="sidebar-btn">
+					<i class="fas fa-bars"></i>
+					icon
+				</div>
+				<ul>
+					<li><a href="#"><i class="fas fa-search"></i></a></li>
+					icon
+					<li><a href="#"><i class="fas fa-bell"></i></a></li>
+					icon
+					<li><a href="#" data-toggle="modal"
+						data-target="#exampleModal"><i class="fas fa-power-off"></i></a></li>
+					icon
+				</ul>
+			</div>
+
+		</div>
+	</header> -->
+
+	<!-- <div class="row">
+
+		<div th:replace="../fragments/sidebar::sidebar"></div>
+	</div> -->
+	
+	<!-- <div th:fragment="content">
+		</div> -->
+	<!-- <footer th:fragment="footer">
+		<div class="text text-center">
+			<p>EccTelInk &copy; 2021</p>
+
+		</div>
+
+	</footer> -->
+
+###########################
+DELETE MODAL DIALOG
+###########################
+
+
+
+</body>
+</html>

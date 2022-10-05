@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{../fragments/main_layout}">
+<head th:replace="fragments :: page_head('Home - Shopme Admin','none')">
+
+</head>
+<body>
+
+	<div layout:fragment="content" class="main-container">
+
+		<div class="card cardspace">
+			<div>
+				<input type="button"
+					class="form-control w-25 btn btn-secondary mb-2"
+					id="link-add-subject" data-bs-toggle="modal"
+					data-bs-target="#newSubject" href="" value="Add" />
+			</div>
+			<div class="card card-body">
+
+				<!-- 				<form method="post" th:object="${subjects}" th:action="@{/courses}"> -->
+				<form action="">
+					<div class="row ms-auto">
+						<div class="col-sm-8">
+							<div class="form-group">
+								<label for="coursecode">Course Code</label> <input type="search"
+									class="form-control" id="coursecode">
+								<!-- <div class="text text-danger"
+										th:if="${#fields.hasErrors('coursecode')}"
+										th:errors="*{coursecode}"></div> -->
+
+							</div>
+						</div>
+						<div class="form-group col-sm-4 pt-3">
+
+							<!-- <div class="text text-danger"
+										th:if="${#fields.hasErrors('subjectname')}"
+										th:errors="*{subjectname}"></div> -->
+							<button type="submit" class="btn btn-primary">Submit</button>
+						</div>
+					</div>
+
+				</form>
+
+			</div>
+
+		</div>
+
+
+		<div class="card cardspace">
+
+			<div class="card card-body">
+				<!-- <div class="form-row">
+ -->
+				<table class="table table-hover table-bordered">
+					<thead>
+						<tr>
+
+							<th scope="col">Subject Code</th>
+							<th scope="col">Subject Name</th>
+
+							<th width="50px"></th>
+							<th width="50px"></th>
+						</tr>
+					</thead>
+					<tbody>
+
+						<tr th:each="subject:${subjects}">
+							<td th:text="${subject.code}"></td>
+							<td th:text="${subject.name}"></td>
+							<td><a href="#"><span class="btn btn-primary fa fa-edit">Edit</span></a></td>
+							<td><a href="#"><span
+									class="btn btn-primary fa fa-trash-alt">Delete</span></a></td>
+						</tr>
+
+
+
+					</tbody>
+				</table>
+
+
+				<!-- 	</div> -->
+
+			</div>
+
+		</div>
+
+		<div class="modal fade text-center" id="newSubject">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title">New Subject</h4>
+						<button type="button" data-bs-dismiss="modal" class="btn-close"
+							aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						<!-- <form th:action="@{/subjects/save}" method="post" th:object="${subject}" id="link-save"> -->
+						<!-- 					<form th:object="${subject}" onsubmit="return submitForm();"> -->
+						<form onsubmit="return submitFormNew();">
+							<div class="form-group mb-2">
+								<div class="row g-3 align-item-center ">
+									<div class="col-auto">
+										<label class="col-form-label">Subject Code:</label>
+									</div>
+									<div class="col-auto">
+										<input type="text" class="form-control" name="code" />
+									</div>
+								</div>
+							</div>
+							<div class="form-group m-auto">
+								<div class="row g-3 align-item-center ">
+									<div class="col-auto">
+										<label class="col-form-label">Subject Name:</label>
+									</div>
+									<div class="col-auto">
+										<input type="text" class="form-control" name="name" />
+									</div>
+								</div>
+							</div>
+
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="submit" class="btn btn-success" id="saveButton">Save</button>
+						<button type="button" class="btn btn-danger"
+							data-bs-dismiss="modal">Cancel</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<script type="text/javascript">
+
+	$(document).ready(function(){
+		//newSubject= $("#newSubject");
+		var name;
+		var code;
+	
+	
+		//requestURL = contextPath + "subjects/save"
+		//requestBody = {code: code, name: name};	
+		/* $("#link-save").on("click", function(e){
+			e.preventDefault();
+			linkDetailURL = $(this).attr("href");
+			link = $(this);
+			saveSubjectURL = ("href",link.attr("href"));
+			alert(saveSubjectURL);
+		});
+		 */
+		$("#link-add-subject").on("click",function(e) {
+			
+//			$("#link-save").submit(function(e) {
+				e.preventDefault();
+				submitFormNew();
+// 				$.ajax({
+// 					type : "POST",
+// 					url : requestURL,
+// 					data: JSON.stringify(requestBody),
+// 					contentType: 'application/json'
+					
+					
+// 				}).done(function(returnResponse){
+// 					//log response from the server
+// 					console.log(returnResponse);
+					
+// 					showMessageModal("Return request has been sent");
+					
+// 					updateStatusTextAndHideReturnButton(orderId);
+					
+// 				}) 
+//			});
+
+		});
+	});
+	
+	function submitFormNew(){
+		//reads the values of the fields
+		name = $("input[name='name']").val();
+		code = $("input[name='code']").val();
+		
+ alert(name + " - " + code);
+// 		$.ajax({
+// 				type : "POST",
+// 				url : requestURL,
+// 				data: JSON.stringify(requestBody),
+// 				contentType: 'application/json'
+			
+			
+// 			}).done(function(response){
+// 				//log response from the server
+// 				console.log(returnResponse);
+			
+// 				showMessageModal("Return request has been sent");
+			
+// 			updateStatusTextAndHideReturnButton(orderId);
+			
+// 			}) 
+		
+		return false;
+	};
+</script>
+</body>
+</html>
