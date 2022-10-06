@@ -132,68 +132,35 @@
 	</div>
 
 	<script type="text/javascript">
+	contextPath = "[[@{/}]]";
+	$(document).ready(function() {
+		requestURL = contextPath + "subjects/save"
 
-	$(document).ready(function(){
-		//newSubject= $("#newSubject");
-		var name;
-		var code;
-	
-	
-		//requestURL = contextPath + "subjects/save"
-			
-		/* $("#link-save").on("click", function(e){
+		$("#saveButton").on("click", function(e) {
 			e.preventDefault();
-			linkDetailURL = $(this).attr("href");
-			link = $(this);
-			saveSubjectURL = ("href",link.attr("href"));
-			alert(saveSubjectURL);
-		});
-		 */
-		$("#link-add-subject").on("click",function(e) {
-			
-//			$("#link-save").submit(function(e) {
-				e.preventDefault();
-				submitFormNew();
-// 				$.ajax({
-// 					type : "POST",
-// 					url : requestURL,
-
-					
-					
-// 				}).done(function(response){
-// 					//log response from the server
-// 					console.log(response);
-			
-					
-// 				}) 
-//			});
+			submitFormNew();
 
 		});
 	});
-	
-	function submitFormNew(){
+
+	function submitFormNew() {
 		//reads the values of the fields
 		name = $("input[name='name']").val();
 		code = $("input[name='code']").val();
-		
- alert(name + " - " + code);
-// 		$.ajax({
-// 				type : "POST",
-// 				url : requestURL,
-// 				data: JSON.stringify(requestBody),
-// 				contentType: 'application/json'
-			
-			
-// 			}).done(function(response){
-// 				//log response from the server
-// 				console.log(returnResponse);
-			
-// 				showMessageModal("Return request has been sent");
-			
-// 			updateStatusTextAndHideReturnButton(orderId);
-			
-// 			}) 
-		
+
+		$.ajax({
+			type : "POST",
+			url : requestURL,
+			data : {
+				name : name,
+				code : code
+			},
+			dataType : "json",
+			success : function(response) {
+				console.log(data);
+			}
+		});
+
 		return false;
 	};
 </script>
